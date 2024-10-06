@@ -12,7 +12,7 @@ import os
 import json
 
 # Path to the frontend folder (set relative path)
-frontend_folder = os.path.abspath('../WM2024/frontend')
+frontend_folder = os.path.abspath('../frontend')
 
 # Initialize Flask app with template and static folder paths
 app = Flask(__name__,
