@@ -16,9 +16,21 @@ def load_access_token():
             return token_data.get('access_token')
     return None
 
-# Endpoint to fetch live stock data from SchwabAPI
 @stock_game_module.route('/live_stock_data', methods=['GET'])
 def get_live_stock_data():
+    # Simulate mode, set to True during maintenance or testing
+    simulate = request.args.get('simulate', 'false').lower() == 'true'
+    
+    if simulate:
+        # Return mock data if simulation mode is on
+        mock_data = {
+            "symbol": "AAPL",
+            "price": 150.25,
+            "volume": 54000000,
+            "change": -0.35
+        }
+        return jsonify(mock_data), 200
+
     symbol = request.args.get('symbol')
     access_token = load_access_token()
 

@@ -76,6 +76,11 @@ def financial_instruments_form():
 def risk_return_form():
     return render_template('risk_return_form.html')
 
+# Risk and Return Form
+@app.route('/wacc/wacc_form')
+def wacc_form():
+    return render_template('wacc_form.html')
+
 # Investment Analysis Form
 @app.route('/investment_analysis_form')
 def investment_analysis_form():
