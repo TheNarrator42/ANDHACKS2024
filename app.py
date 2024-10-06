@@ -11,8 +11,12 @@ def landingPage():
 def tutorialPage(tutorialPage):
     return render_template('tutorial{}.html'.format(tutorialPage))
 
+@app.route('/test')
+def test():
+    return render_template('navbar.html')
+
 @app.route('/game')
-def dashboard():
+def game():
     return render_template('dashboard.html')
 
 @app.route('/process', methods=['POST'])
