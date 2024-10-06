@@ -25,3 +25,54 @@ Principal (Future Value): $1,628.89
 Interest Rate: 5%
 Time: 10 years
 Result: $1,000
+
+Compound Interest (Test Case 1)
+Scenario: You invest $5,000 at an interest rate of 5%, compounded quarterly for 10 years.
+Principal (P): $5,000
+Annual Interest Rate (r): 5% (0.05)
+Time (t): 10 years
+Compounding Frequency (n): Quarterly (4 times a year)
+Expected Result:
+Future Value (A) = $8,193.08
+
+Compound Interest (Test Case 2)
+Scenario: You invest $2,000 at an interest rate of 7%, compounded monthly for 5 years.
+Principal (P): $2,000
+Annual Interest Rate (r): 7% (0.07)
+Time (t): 5 years
+Compounding Frequency (n): Monthly (12 times a year)
+Expected Result:
+Future Value (A) = $2,838.01
+
+Future Value of an Ordinary Annuity (Test Case 1)
+Scenario: You invest $1,000 at the end of each year in an account earning 6% interest for 15 years.
+Payment (PMT): $1,000
+Annual Interest Rate (r): 6% (0.06)
+Time (t): 15 years
+Expected Result:
+Future Value of Annuity (FV) = $23,275.97
+
+Present Value of an Ordinary Annuity (Test Case 2)
+Scenario: You are receiving $5,000 per year for 10 years at a discount rate of 4%.
+Payment (PMT): $5,000
+Annual Interest Rate (r): 4% (0.04)
+Time (t): 10 years
+Expected Result:
+Present Value of Annuity (PV) = $40,554.50
+
+Future Value of an Ordinary Annuity (Test Case 2)
+Scenario: You invest $500 at the end of each month in an account earning 3% interest, compounded monthly, for 10 years.
+Payment (PMT): $500
+Annual Interest Rate (r): 3% (0.03)
+Time (t): 10 years (120 months)
+Expected Result:
+Future Value of Annuity (FV) = $69,870.50
+
+# WACC Test Case
+Plugging Values into the WACC Form:
+Debt: 500,000
+Equity: 1,000,000
+Cost of Debt (Rd): 4%
+Cost of Equity (Re): 8%
+Tax Rate: 30%
+After submitting the form, the app should return a WACC value of 6.26%.
