@@ -5,11 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorial</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    {% include 'header.html' %}
+      <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Marketwatch</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="container">
+      <div class="collapse navbar-collapse" id="navbarsExample02">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="/intro_finance_form">Intro to Finance</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="/financial_statement_form">Financial Statements</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="/financial_math_form">Financial Mathematics</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="/wacc/wacc_form">WACC</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="/financial_instruments_form">Financial Instruments</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="/risk_return_form">Risk & Return</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="/investment_analysis_form">Investment Analysis</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="/stock_game">Dashboard</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <div class="container"style="padding:0px">
         <h1>Finance Tutorial</h1>
         <p>Select a module to start learning:</p>
 
