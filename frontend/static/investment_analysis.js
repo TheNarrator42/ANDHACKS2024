@@ -18,10 +18,13 @@ document.getElementById('investment-form').addEventListener('submit', async func
         console.log(result);
         if (response.ok) {
             document.getElementById('investment_result').innerHTML = `
-                <p>NPV: ${result.npv}</p>
-                <p>IRR: ${result.irr}%</p>
-                <p>Payback Period: ${result.payback_period} years</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">NPV: ${result.npv}</li>
+                    <li class="list-group-item">IRR: ${result.irr}</li>
+                    <li class="list-group-item">Payback Period: ${result.payback_period}</li>
+                </ul>
             `;
+            document.getElementById('result-card').style.display = "block";
         } else {
             document.getElementById('investment_result').innerHTML = `<p>Error: ${result.error}</p>`;
         }

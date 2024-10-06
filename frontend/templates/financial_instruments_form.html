@@ -5,50 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Instruments & Markets</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
     {% include 'header.html' %}
 
     <h1>Financial Instruments & Markets</h1>
 
-    <div>
-        <h2>Bond Pricing Calculator</h2>
-        <form id="bond-form">
-            <label>Face Value:</label>
-            <input type="number" id="face_value" required><br>
-
-            <label>Coupon Rate (%):</label>
-            <input type="number" id="coupon_rate" step="0.01" required><br>
-
-            <label>Periods (Years):</label>
-            <input type="number" id="periods" required><br>
-
-            <label>Market Rate (%):</label>
-            <input type="number" id="market_rate" step="0.01" required><br>
-
-            <button type="submit">Calculate Bond Price</button>
-        </form>
-        <div id="bond_result"></div>
-    </div>
-
-    <div>
-        <h2>Stock Pricing Calculator (DDM)</h2>
-        <form id="stock-form">
-            <label>Dividend:</label>
-            <input type="number" id="dividend" step="0.01" required><br>
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Bond Pricing Calculator Form -->
+            <div class="col-md-6">
+                <h2>Bond Pricing Calculator</h2>
+                <form id="bond-form" class="shadow p-4 bg-white rounded mb-4">
+                    <div class="mb-3">
+                        <label>Face Value:</label>
+                        <input class="form-control" type="number" id="face_value" required>
+                    </div>
     
-            <label>Growth Rate (%):</label>
-            <input type="number" id="growth_rate" step="0.01" required><br>
+                    <div class="mb-3">
+                        <label>Coupon Rate (%):</label>
+                        <input class="form-control" type="number" id="coupon_rate" step="0.01" required>
+                    </div>
     
-            <label>Required Rate of Return (%):</label>
-            <input type="number" id="required_rate_of_return" step="0.01" required><br>
+                    <div class="mb-3">
+                        <label>Periods (Years):</label>
+                        <input class="form-control" type="number" id="periods" required>
+                    </div>
     
-            <button type="submit">Calculate Stock Price</button>
-        </form>
-        <div id="stock_result"></div>
+                    <div class="mb-3">
+                        <label>Market Rate (%):</label>
+                        <input class="form-control" type="number" id="market_rate" step="0.01" required>
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary w-100">Calculate Bond Price</button>
+                </form>
+
+                <div class="container d-flex justify-content-center align-items-center mb-5">
+                    <div class="card shadow-lg border-3" id="bond-result-card" style="width: 18rem; border-color: black; display: none;">
+                        <div class="card-body">
+                            <div id="bond_result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Stock Pricing Calculator Form -->
+            <div class="col-md-6">
+                <h2>Stock Pricing Calculator (DDM)</h2>
+                <form id="stock-form" class="shadow p-4 bg-white rounded mb-4">
+                    <div class="mb-3">
+                        <label>Dividend:</label>
+                        <input class="form-control" type="number" id="dividend" step="0.01" required>
+                    </div>
+    
+                    <div class="mb-3">
+                        <label>Growth Rate (%):</label>
+                        <input class="form-control" type="number" id="growth_rate" step="0.01" required>
+                    </div>
+    
+                    <div class="mb-3">
+                        <label>Required Rate of Return (%):</label>
+                        <input class="form-control" type="number" id="required_rate_of_return" step="0.01" required>
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary w-100">Calculate Stock Price</button>
+                </form>
+                
+                <div class="container d-flex justify-content-center align-items-center mb-5">
+                    <div class="card shadow-lg border-3" id="stock-result-card" style="width: 18rem; border-color: black; display: none;">
+                        <div class="card-body">
+                            <div id="stock_result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
 
     <script src="{{ url_for('static', filename='financial_instruments.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

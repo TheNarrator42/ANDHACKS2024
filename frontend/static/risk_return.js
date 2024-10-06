@@ -17,14 +17,15 @@ document.getElementById('capm-form').addEventListener('submit', async function(e
         });
         const result = await response.json();
         if (response.ok) {
-            document.getElementById('capm_result').innerHTML = `<p>Required Rate of Return: ${result.required_rate_of_return}%</p>`;
+            document.getElementById('capm_result').innerHTML = `<h2>Required Rate of Return: ${result.required_rate_of_return}%</h2>`;
             updateRiskReturnGraph(formData.beta, result.required_rate_of_return);
+            document.getElementById('capm-result-card').style.display = "block";
         } else {
             document.getElementById('capm_result').innerHTML = `<p>Error: ${result.error}</p>`;
         }
     } catch (error) {
         console.error('Error calculating CAPM:', error);
-    }
+    }   
 });
 
 // Function to update the risk-return graph
