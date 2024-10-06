@@ -32,7 +32,8 @@ document.getElementById('financial-math-form').addEventListener('submit', async 
         }
 
         const result = await response.json();
-        document.getElementById('result').innerHTML = `<p>Result: ${result.result.toFixed(2)}</p>`;
+        document.getElementById('result').innerHTML = `<h2>Result: $${result.result.toFixed(2)}</h2>`;
+        document.getElementById('result').style.display = "block";
     } catch (error) {
         console.error('Error calculating financial math:', error);
         document.getElementById('result').innerHTML = `<p>Error: ${error.message}</p>`;
