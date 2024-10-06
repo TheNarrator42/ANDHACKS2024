@@ -187,3 +187,5 @@ Use services/finance_calculations.py to handle more complex financial logic, lik
 Write unit tests for each route under the tests/ directory.
 
 http://127.0.0.1:5000/auth/authorize
+
+garden5916exact
