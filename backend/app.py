@@ -2,6 +2,8 @@ from flask import Flask, render_template
 from routes.intro_finance import intro_finance_module
 from routes.financial_statement import financial_statement_module
 from routes.financial_math import financial_math_module
+from routes.intro_finance import intro_finance_module
+from routes.wacc import wacc_module
 import os
 
 # Path to the frontend folder
@@ -16,6 +18,9 @@ app = Flask(__name__,
 app.register_blueprint(intro_finance_module, url_prefix='/intro_finance')
 app.register_blueprint(financial_statement_module, url_prefix='/financial_statement')
 app.register_blueprint(financial_math_module, url_prefix='/financial_math')
+app.register_blueprint(intro_finance_module, url_prefix='/intro_finance')
+app.register_blueprint(wacc_module, url_prefix='/wacc')
+
 
 # Landing page route
 @app.route('/')
