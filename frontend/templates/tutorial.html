@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div class="container">
+        <h1>Finance Tutorial</h1>
+        <p>Select a module to start learning:</p>
+
+        <div class="module-links">
+            <a href="/intro_finance" class="btn btn-outline-primary">Introduction to Finance</a>
+            <a href="/financial_statement" class="btn btn-outline-primary">Financial Statement Analysis</a>
+            <a href="/financial_math" class="btn btn-outline-primary">Financial Mathematics</a>
+            <a href="/wacc" class="btn btn-outline-primary">WACC Calculation</a>
+            <a href="/financial_instruments" class="btn btn-outline-primary">Financial Instruments & Markets</a>
+            <a href="/risk_return" class="btn btn-outline-primary">Risk & Return</a>
+            <a href="/investment_analysis" class="btn btn-outline-primary">Investment Analysis</a>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

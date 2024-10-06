@@ -185,3 +185,5 @@ finance-app/
 Add new routes to the routes/ folder.
 Use services/finance_calculations.py to handle more complex financial logic, like NPV, WACC, etc., for future modules.
 Write unit tests for each route under the tests/ directory.
+
+http://127.0.0.1:5000/auth/authorize
