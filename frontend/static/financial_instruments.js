@@ -20,7 +20,7 @@ document.getElementById('bond-form').addEventListener('submit', async function(e
         const result = await response.json();
         if (response.ok) {
             document.getElementById('bond_result').innerHTML = `<h2>Bond Price: $${result.bond_price}</h2>`;
-            document.getElementById('bond-result-card').style.display = "block";
+            document.getElementById('bond_result').style.display = "block";
         } else {
             document.getElementById('bond_result').innerHTML = `<p>Error: ${result.error}</p>`;
         }
@@ -50,7 +50,7 @@ document.getElementById('stock-form').addEventListener('submit', async function(
         const result = await response.json();
         if (response.ok) {
             document.getElementById('stock_result').innerHTML = `<h2>Stock Price: $${result.stock_price}</h2>`;
-            document.getElementById('stock-result-card').style.display = "block";
+            document.getElementById('stock_result').style.display = "block";
         } else {
             document.getElementById('stock_result').innerHTML = `<p>Error: ${result.error}</p>`;
         }
