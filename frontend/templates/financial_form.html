@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Statement Form</title>
+    <!-- Load the CSS file using Flask's url_for function -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Financial Statement Analysis</h1>
+    <form id="financial-form">
+        <label>Current Assets:</label>
+        <input type="number" id="current_assets" name="current_assets"><br>
+
+        <label>Current Liabilities:</label>
+        <input type="number" id="current_liabilities" name="current_liabilities"><br>
+
+        <label>Inventory:</label>
+        <input type="number" id="inventory" name="inventory"><br>
+
+        <label>Revenue:</label>
+        <input type="number" id="revenue" name="revenue"><br>
+
+        <label>Gross Profit:</label>
+        <input type="number" id="gross_profit" name="gross_profit"><br>
+
+        <label>Net Income:</label>
+        <input type="number" id="net_income" name="net_income"><br>
+
+        <label>Total Assets:</label>
+        <input type="number" id="total_assets" name="total_assets"><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="ratios"></div>
+
+    <!-- Load the JavaScript file using Flask's url_for function -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
