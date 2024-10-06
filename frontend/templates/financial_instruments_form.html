@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Instruments & Markets</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <h1>Financial Instruments & Markets</h1>
+
+    <div>
+        <h2>Bond Pricing Calculator</h2>
+        <form id="bond-form">
+            <label>Face Value:</label>
+            <input type="number" id="face_value" required><br>
+
+            <label>Coupon Rate (%):</label>
+            <input type="number" id="coupon_rate" step="0.01" required><br>
+
+            <label>Periods (Years):</label>
+            <input type="number" id="periods" required><br>
+
+            <label>Market Rate (%):</label>
+            <input type="number" id="market_rate" step="0.01" required><br>
+
+            <button type="submit">Calculate Bond Price</button>
+        </form>
+        <div id="bond_result"></div>
+    </div>
+
+    <div>
+        <h2>Stock Pricing Calculator (DDM)</h2>
+        <form id="stock-form">
+            <label>Dividend:</label>
+            <input type="number" id="dividend" step="0.01" required><br>
+    
+            <label>Growth Rate (%):</label>
+            <input type="number" id="growth_rate" step="0.01" required><br>
+    
+            <label>Required Rate of Return (%):</label>
+            <input type="number" id="required_rate_of_return" step="0.01" required><br>
+    
+            <button type="submit">Calculate Stock Price</button>
+        </form>
+        <div id="stock_result"></div>
+    </div>
+    
+
+    <script src="{{ url_for('static', filename='financial_instruments.js') }}"></script>
+</body>
+</html>

@@ -76,3 +76,39 @@ Cost of Debt (Rd): 4%
 Cost of Equity (Re): 8%
 Tax Rate: 30%
 After submitting the form, the app should return a WACC value of 6.26%.
+
+# Financial Instruments Test Cases
+Scenario: A company issues a bond with the following characteristics:
+Face Value: $1,000
+Coupon Rate: 5% (annual coupon payment)
+Periods (Years): 10 years
+Market Interest Rate: 6% (current market rate for similar bonds)
+Expected Result:
+Bond Price: $926.76
+
+Scenario: A stock pays an annual dividend of $2.50 per share. The dividend is expected to grow at a rate of 4% annually, and the required rate of return for the stock is 10%. (Dividend Discount Formula)
+Dividend = $2.50
+Required Rate of Return = 10% = 0.10
+Growth Rate = 4% = 0.04
+Expected Result:
+Stock Price: $41.67
+
+# Risk Return Test
+Test Case for CAPM:
+Inputs:
+Risk-Free Rate: 3%
+Beta: 1.2
+Expected Market Return: 8%
+Required Rate of Return: 9%
+
+# Investment Analysis Test
+Test Case for Investment Analysis:
+Inputs:
+Discount Rate: 10%
+Cash Flows: -50,000 (initial investment), 10,000, 20,000, 30,000, 40,000 (future cash inflows)
+Expected Calculation:
+NPV: 28,264.46
+IRR:
+Using numerical methods, IRR should be around 17.03%.
+Payback Period:
+It takes 3 years to recover the initial investment.
