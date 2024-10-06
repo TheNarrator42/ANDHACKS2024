@@ -5,21 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finance App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
 </head>
 <body>    
-    <div class="container text-center">
-        <h1>Welcome to the Finance App</h1>
-        <p>Select an option to begin:</p>
+    <div class="hero-image">
+        <div class="hero-text">
+            <!-- Title -->
+            <h1>MarketWatch</h1>
+            
+            <!-- Subtitle or the typed-out text effect -->
+            <div id="typed-output"></div>
+            
+            <!-- Horizontal cards container -->
+            <div class="hero-cards">
+                <!-- Bootstrap card for Start Tutorial -->
+                <div class="card card-custom">
+                    <div class="card-body">
+                        <h5 class="card-title">Tutorial</h5>
+                        <p class="card-text">Get started with our detailed tutorial to understand market trends.</p>
+                        <a href="/tutorial" class="btn btn-primary">Start Tutorial</a>
+                    </div>
+                </div>
 
-        <div class="buttons">
-            <!-- Button for the tutorial (which will take users to the finance modules) -->
-            <a href="/tutorial" class="btn btn-primary">Start Tutorial</a>
-
-            <!-- Button to go directly to the stock game -->
-            <a href="/stock_game" class="btn btn-success">Go to Stock Game</a>
+                <!-- Bootstrap card for Stock Game -->
+                <div class="card card-custom">
+                    <div class="card-body">
+                        <h5 class="card-title">Stock Game</h5>
+                        <p class="card-text">Test your skills with our interactive stock trading game.</p>
+                        <a href="/stock_game" class="btn btn-success">Go to Stock Game</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
+    
     <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        var options = {
+            strings: ["Track market trends with live updates", "Stay updated with the latest stock data"],
+            typeSpeed: 50,
+            backSpeed: 25,
+            backDelay: 2000, // Delay after text is typed before deleting
+            loop: true
+          };
+        
+          var typed = new Typed("#typed-output", options);
+    </script>
+
 </body>
 </html>

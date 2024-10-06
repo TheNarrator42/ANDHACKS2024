@@ -19,7 +19,7 @@ document.getElementById('capm-form').addEventListener('submit', async function(e
         if (response.ok) {
             document.getElementById('capm_result').innerHTML = `<h2>Required Rate of Return: ${result.required_rate_of_return}%</h2>`;
             updateRiskReturnGraph(formData.beta, result.required_rate_of_return);
-            document.getElementById('capm-result-card').style.display = "block";
+            document.getElementById('capm_result').style.display = "block";
         } else {
             document.getElementById('capm_result').innerHTML = `<p>Error: ${result.error}</p>`;
         }

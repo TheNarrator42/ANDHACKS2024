@@ -11,7 +11,7 @@
 <body>
     {% include 'header.html' %}
 
-    <h1>Financial Instruments & Markets</h1>
+    <h1 class="mt-4">Financial Instruments & Markets</h1>
 
     <div class="container mt-5">
         <div class="row">
@@ -42,13 +42,7 @@
                     <button type="submit" class="btn btn-primary w-100">Calculate Bond Price</button>
                 </form>
 
-                <div class="container d-flex justify-content-center align-items-center mb-5">
-                    <div class="card shadow-lg border-3" id="bond-result-card" style="width: 18rem; border-color: black; display: none;">
-                        <div class="card-body">
-                            <div id="bond_result"></div>
-                        </div>
-                    </div>
-                </div>
+                <div id="bond_result" class = "result-container" style="display:none;"></div>
             </div>
     
             <!-- Stock Pricing Calculator Form -->
@@ -73,13 +67,8 @@
                     <button type="submit" class="btn btn-primary w-100">Calculate Stock Price</button>
                 </form>
                 
-                <div class="container d-flex justify-content-center align-items-center mb-5">
-                    <div class="card shadow-lg border-3" id="stock-result-card" style="width: 18rem; border-color: black; display: none;">
-                        <div class="card-body">
-                            <div id="stock_result"></div>
-                        </div>
-                    </div>
-                </div>
+                <div id="stock_result" class = "result-container" style="display:none;"></div>
+
             </div>
         </div>
     </div>

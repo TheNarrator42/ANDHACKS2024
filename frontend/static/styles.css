@@ -19,3 +19,76 @@ body {
 .module-link:hover {
     background-color: #0056b3;
 }
+
+.result-container {
+    display: flex;
+    align-items: center;  /* Vertically align */
+    justify-content: center;  /* Horizontally align */
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #c3e6cb;  /* Light green border */
+    background-color: #d4edda;  /* Light green background */
+    color: #155724;  /* Dark green text color */
+    border-radius: 8px;  /* Rounded corners */
+    font-weight: bold;  /* Make the text bold */
+}
+
+/* Landing Page CSS */
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/financial-charts.webp');
+    height: 100vh; /* Full screen height */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center the text on the hero image */
+.hero-text {
+    color: white;
+    text-align: center;
+}
+
+/* Increase title and subtitle sizes */
+.hero-text h1 {
+    font-size: 4rem; /* Increase title size */
+    font-weight: bold;
+}
+
+.hero-text #typed-output {
+    font-size: 1.5rem; /* Increase subtitle size */
+    margin-top: 20px;
+}
+
+/* Cards container */
+.hero-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Custom Bootstrap card with gradient background */
+.card-custom {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9));
+    color: white;
+    width: 18rem;
+    border: none;
+}
+
+.card-custom .card-body a {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-custom .card-body a:hover {
+    text-decoration: underline;
+}
+
+#typed-output {
+    display: inline; /* This keeps the caret on the same line */
+}
