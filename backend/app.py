@@ -89,7 +89,7 @@ def investment_analysis_form():
 # Stock Game Form (connects stock_game.py logic to the same app)
 @app.route('/stock_game')
 def stock_game():
-    return render_template('stock_game_form.html')  # HTML form for the stock game
+    return render_template('stock_game.html')  # HTML form for the stock game
 
 # Add the callback route for Schwab API OAuth2 (handled by auth.py)
 @app.route('/auth/callback')
