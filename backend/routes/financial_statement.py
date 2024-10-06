@@ -19,6 +19,8 @@ def input_financial_data():
         user_data['gross_profit'] = float(user_data.get('gross_profit', 1))
         user_data['net_income'] = float(user_data.get('net_income', 1))
         user_data['total_assets'] = float(user_data.get('total_assets', 1))
+        user_data['operating_cash_flow'] = float(user_data.get('operating_cash_flow', 0))
+        user_data['capex'] = float(user_data.get('capex', 0))
 
         user_id = user_data.get('user_id', 'default_user')  # Assign a default user ID
 
@@ -43,7 +45,7 @@ def get_financial_ratios():
             return jsonify({"error": "User data not found"}), 404
 
         data = financial_data[user_id]
-        
+
         # Calculate ratios safely
         current_ratio = data['current_assets'] / data['current_liabilities']
         quick_ratio = (data['current_assets'] - data['inventory']) / data['current_liabilities']
@@ -51,12 +53,17 @@ def get_financial_ratios():
         net_profit_margin = data['net_income'] / data['revenue']
         asset_turnover_ratio = data['revenue'] / data['total_assets']
 
+        # Example cash flow ratio
+        free_cash_flow = data['operating_cash_flow'] - data['capex']
+        cash_flow_margin = free_cash_flow / data['revenue']
+
         ratios = {
             "current_ratio": current_ratio,
             "quick_ratio": quick_ratio,
             "gross_profit_margin": gross_profit_margin,
             "net_profit_margin": net_profit_margin,
-            "asset_turnover_ratio": asset_turnover_ratio
+            "asset_turnover_ratio": asset_turnover_ratio,
+            "cash_flow_margin": cash_flow_margin
         }
 
         return jsonify({"financial_ratios": ratios}), 200

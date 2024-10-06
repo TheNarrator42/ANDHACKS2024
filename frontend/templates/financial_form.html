@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Statement Form</title>
-    <!-- Load the CSS file using Flask's url_for function -->
+    <title>Financial Statement Analysis</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -31,12 +30,20 @@
         <label>Total Assets:</label>
         <input type="number" id="total_assets" name="total_assets"><br>
 
+        <label>Operating Cash Flow:</label>
+        <input type="number" id="operating_cash_flow" name="operating_cash_flow"><br>
+
+        <label>Capital Expenditures:</label>
+        <input type="number" id="capex" name="capex"><br>
+
         <button type="submit">Submit</button>
     </form>
 
     <div id="ratios"></div>
 
-    <!-- Load the JavaScript file using Flask's url_for function -->
+    <canvas id="ratiosChart" width="400" height="200"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
