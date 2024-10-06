@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Modules</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Finance App</h1>
+    <p>Select a module to get started:</p>
+
+    <div class="modules">
+        <a href="/financial_statement_form" class="module-link">Financial Statement Analysis</a>
+        <a href="/financial_math_form" class="module-link">Financial Mathematics</a>
+        <a href="/intro_finance_form" class="module-link">Intro to Finance</a>
+    </div>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .modules {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .module-link {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .module-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro to Finance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <h1>Introduction to Finance</h1>
+
+    <div>
+        <h2>Objectives of Financial Management</h2>
+        <ul id="objectives-list"></ul>
+    </div>
+
+    <div>
+        <h2>Roles of Financial Managers</h2>
+        <ul id="roles-list"></ul>
+    </div>
+
+    <div>
+        <h2>Divisions of Finance</h2>
+        <ul id="divisions-list"></ul>
+    </div>
+
+    <script src="{{ url_for('static', filename='intro_finance.js') }}"></script>
+</body>
+</html>

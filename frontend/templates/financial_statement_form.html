@@ -1,3 +1,5 @@
+{% include 'header.html' %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +45,9 @@
 
     <canvas id="ratiosChart" width="400" height="200"></canvas>
 
+    <button onclick="window.location.href='/'">Back to Home</button>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='financial_statement.js') }}"></script>
 </body>
 </html>
