@@ -5,26 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutorial</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
     {% include 'header.html' %}
 
     <div class="container">
-        <h1>Finance Tutorial</h1>
+        <h1 class="mt-4">Finance Tutorial</h1>
         <p>Select a module to start learning:</p>
 
-        <div class="module-links">
-            <a href="/intro_finance_form" class="btn btn-outline-primary">Introduction to Finance</a>
-            <a href="/financial_statement_form" class="btn btn-outline-primary">Financial Statement Analysis</a>
-            <a href="/financial_math_form" class="btn btn-outline-primary">Financial Mathematics</a>
-            <a href="/wacc/wacc_form" class="btn btn-outline-primary">WACC Calculation</a>
-            <a href="/financial_instruments_form" class="btn btn-outline-primary">Financial Instruments & Markets</a>
-            <a href="/risk_return_form" class="btn btn-outline-primary">Risk & Return</a>
-            <a href="/investment_analysis_form" class="btn btn-outline-primary">Investment Analysis</a>
-            <a href="/stock_game" class="btn btn-outline-primary">Play Game</a>
+        <div class="container">
+            <div class="row">
+                <!-- Card 1: Introduction to Finance -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Introduction to Finance</h5>
+                            <p class="card-text">Learn the basics of finance, including key concepts and terminology.</p>
+                            <a href="/intro_finance_form" class="btn btn-outline-primary">Start Module</a>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Card 2: Financial Statement Analysis -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Financial Statement Analysis</h5>
+                            <p class="card-text">Analyze financial statements to understand a company's financial position.</p>
+                            <a href="/financial_statement_form" class="btn btn-outline-primary">Start Module</a>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Card 3: Financial Mathematics -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Financial Mathematics</h5>
+                            <p class="card-text">Learn essential financial mathematics concepts like time value of money.</p>
+                            <a href="/financial_math_form" class="btn btn-outline-primary">Start Module</a>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Card 4: WACC Calculation -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">WACC Calculation</h5>
+                            <p class="card-text">Calculate the weighted average cost of capital for investment decisions.</p>
+                            <a href="/wacc/wacc_form" class="btn btn-outline-primary">Start Module</a>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Card 5: Financial Instruments & Markets -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Financial Instruments & Markets</h5>
+                            <p class="card-text">Understand various financial instruments and how markets operate.</p>
+                            <a href="/financial_instruments_form" class="btn btn-outline-primary">Start Module</a>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Card 6: Risk & Return -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Risk & Return</h5>
+                            <p class="card-text">Explore the relationship between risk and return in financial markets.</p>
+                            <a href="/risk_return_form" class="btn btn-outline-primary">Start Module</a>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Card 7: Investment Analysis (Centered) -->
+                <div class="col-md-4 mx-auto">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Investment Analysis</h5>
+                            <p class="card-text">Analyze investment opportunities and learn how to make informed decisions.</p>
+                            <a href="/investment_analysis_form" class="btn btn-outline-primary">Start Module</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
     <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
