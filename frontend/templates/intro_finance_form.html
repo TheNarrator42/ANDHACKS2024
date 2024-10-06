@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro to Finance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div class="container py-5">
+        <h1 class="display-4 mb-4">Introduction to Finance</h1>
+
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary-emphasis">Finance</strong>
+                        <h3 class="mb-0">Objectives of Financial Management</h3>
+                        <p class="card-text mb-auto">Learn the main goals of financial management that drive decisions in corporate finance.</p>
+                        <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                            Continue reading
+                            <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+                        </a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <img src="{{ url_for('static', filename='img/Obj_Financial_M.webp') }}" class="bd-placeholder-img" width="200" height="250" alt="Objectives Image">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary-emphasis">Roles</strong>
+                        <h3 class="mb-0">Roles of Financial Managers</h3>
+                        <p class="card-text mb-auto">Discover the critical roles that financial managers play in corporate success.</p>
+                        <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                            Continue reading
+                            <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+                        </a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <img src="{{ url_for('static', filename='img/roles_financial_managers.webp') }}" class="bd-placeholder-img" width="200" height="250" alt="Roles Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-primary-emphasis">Finance</strong>
+                        <h3 class="mb-0">Divisions of Finance</h3>
+                        <p class="card-text mb-auto">Understand the different divisions within finance, such as corporate, markets, and institutions.</p>
+                        <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                            Continue reading
+                            <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+                        </a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <img src="{{ url_for('static', filename='img/divisions_finance.webp') }}" class="bd-placeholder-img" width="200" height="250" alt="Divisions Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='intro_finance.js') }}"></script>
+</body>
+</html>

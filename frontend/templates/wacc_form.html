@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WACC Calculation</title>
+
+    <!-- Load Bootstrap 5 CSS from CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    
+    <!-- Load the CSS file using Flask's url_for function -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="bg-light">
+    {% include 'header.html' %} <!-- Include the reusable header -->
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Weighted Average Cost of Capital (WACC) Calculation</h1>
+
+        <form id="wacc-form" class="shadow p-4 bg-white rounded">
+            <div class="mb-3">
+                <label for="debt" class="form-label">Debt:</label>
+                <input type="number" class="form-control" id="debt" name="deb" placeholder="Enter debt">
+            </div>
+
+            <div class="mb-3">
+                <label for="equity" class="form-label">Equity:</label>
+                <input type="number" class="form-control" id="equity" name="equity" placeholder="Enter equity">
+            </div>
+
+            <div class="mb-3">
+                <label for="cost_of_debt" class="form-label">Cost of Debt (%):</label>
+                <input type="number" class="form-control" id="cost_of_debt" name="cost_of_debt" placeholder="Enter cost of debt">
+            </div>
+
+            <div class="mb-3">
+                <label for="cost_of_equity" class="form-label">Cost of Equity (%):</label>
+                <input type="number" class="form-control" id="cost_of_equity" name="cost_of_equity" placeholder="Enter cost of equity">
+            </div>
+
+            <div class="mb-3">
+                <label for="tax_rate" class="form-label">Tax Rate (%):</label>
+                <input type="number" class="form-control" id="tax_rate" name="tax_rate" placeholder="Enter tax rate">
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+
+        <div id="wacc_value" class="mt-4"></div>
+    </div>
+
+    <!-- Load the JavaScript file for WACC -->
+    <script src="{{ url_for('static', filename='wacc.js') }}"></script>
+    
+    <!-- Load Bootstrap 5 JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

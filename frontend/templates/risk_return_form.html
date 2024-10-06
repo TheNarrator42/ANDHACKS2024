@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk and Return (CAPM) Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Risk and Return (CAPM) Calculator</h1>
+        
+        <form id="capm-form" class="shadow p-4 bg-white rounded mx-auto mb-3" style="max-width: 400px;">
+            <div class="mb-3">
+                <label class="form-label">Risk-Free Rate (%):</label>
+                <input class="form-control" type="number" id="risk_free_rate" step="0.01" required>
+            </div>
+    
+            <div class="mb-3">
+                <label class="form-label">Beta:</label>
+                <input class="form-control" type="number" id="beta" step="0.01" required>
+            </div>
+    
+            <div class="mb-3">
+                <label class="form-label">Expected Market Return (%):</label>
+                <input class="form-control" type="number" id="market_return" step="0.01" required>
+            </div>
+    
+            <button type="submit" class="btn btn-primary w-100">Calculate Required Rate of Return</button>
+        </form>
+
+        <div id="capm_result" class = "result-container" style="display:none;"></div>
+    </div>
+
+    
+    
+    <div class="container">
+        <canvas id="risk_return_chart"></canvas>
+    </div>
+
+    <script src="{{ url_for('static', filename='risk_return.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
