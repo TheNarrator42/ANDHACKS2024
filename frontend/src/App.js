@@ -1,22 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './components/Home';
+import Ch1 from './components/Ch1';
+import IntroFinanceForm from './components/IntroFinanceForm';
+import FinancialStatementForm from './components/FinancialStatementForm';
+import FinancialMathForm from './components/FinancialMathForm';
+import WaccForm from './components/WaccForm';
+import FinancialInstrumentsForm from './components/FinancialInstrumentsForm';
+import RiskReturnForm from './components/RiskReturnForm';
+import InvestmentAnalysisForm from './components/InvestmentAnalysisForm';
 
 function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch('http://localhost:5000/get_ch1_content')
-      .then(response => response.json())
-      .then(data => setData(data.content))
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Test CORS with Flask and React</h1>
-        <div dangerouslySetInnerHTML={{ __html: data }} />
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/intro_finance_form" element={<IntroFinanceForm />} />
+        <Route path="/financial_statement_form" element={<FinancialStatementForm />} />
+        <Route path="/financial_math_form" element={<FinancialMathForm />} />
+        <Route path="/wacc/wacc_form" element={<WaccForm />} />
+        <Route path="/financial_instruments_form" element={<FinancialInstrumentsForm />} />
+        <Route path="/risk_return_form" element={<RiskReturnForm />} />
+        <Route path="/investment_analysis_form" element={<InvestmentAnalysisForm />} />
+        <Route path="/ch1" element={<Ch1 />} />
+      </Routes>
+    </Router>
   );
 }
 
