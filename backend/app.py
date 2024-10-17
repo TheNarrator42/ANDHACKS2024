@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, jsonify
+from flask_cors import CORS
 from routes.intro_finance import intro_finance_module
 from routes.financial_statement import financial_statement_module
 from routes.financial_math import financial_math_module
@@ -19,6 +20,9 @@ frontend_folder = os.path.abspath('../frontend')
 app = Flask(__name__,
             template_folder=os.path.join(frontend_folder, 'templates'),
             static_folder=os.path.join(frontend_folder, 'static'))
+
+# Enable CORS for all routes
+CORS(app)
 
 # Register blueprints (modules in routes folder)
 app.register_blueprint(intro_finance_module, url_prefix='/intro_finance')
