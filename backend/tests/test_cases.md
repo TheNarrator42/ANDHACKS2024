@@ -112,3 +112,6 @@ IRR:
 Using numerical methods, IRR should be around 17.03%.
 Payback Period:
 It takes 3 years to recover the initial investment.
+
+# TODO
+- Table on side for period conversion (financial math FV)

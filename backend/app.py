@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, jsonify
 from routes.intro_finance import intro_finance_module
 from routes.financial_statement import financial_statement_module
 from routes.financial_math import financial_math_module
@@ -10,6 +10,7 @@ from api.auth import auth_module  # Import the auth_module correctly from the ap
 from routes.stock_game import stock_game_module  # Stock game module integrated
 import os
 import json
+import markdown
 
 # Path to the frontend folder (set relative path)
 frontend_folder = os.path.abspath('../frontend')
@@ -50,6 +51,24 @@ def landing_page():
 @app.route('/tutorial')
 def tutorial():
     return render_template('tutorial.html')  # Links to all the modules
+
+# READING ROUTES
+READINGS = os.path.join(frontend_folder, 'static/readings')
+# Ch1 Landing
+@app.route('/get_ch1')
+def get_ch1():
+    return render_template('ch1.html')
+# Ch1 Content
+@app.route('/get_ch1_content')
+def get_ch1_content():
+    ch1_md_path = os.path.join(READINGS, 'ch1.md')
+    try:
+        with open(ch1_md_path, 'r') as file:
+            content = file.read()
+        html_content = markdown.markdown(content)
+        return jsonify({'content': html_content})
+    except FileNotFoundError:
+        return jsonify({'error': 'Markdown file not found'}), 404
 
 # Financial Statement Form
 @app.route('/financial_statement_form')
