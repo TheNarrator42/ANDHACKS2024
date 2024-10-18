@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
-import Ch1 from './components/Ch1';
 import IntroFinanceForm from './components/IntroFinanceForm';
 import FinancialStatementForm from './components/FinancialStatementForm';
 import FinancialMathForm from './components/FinancialMathForm';
@@ -10,6 +9,8 @@ import WaccForm from './components/WaccForm';
 import FinancialInstrumentsForm from './components/FinancialInstrumentsForm';
 import RiskReturnForm from './components/RiskReturnForm';
 import InvestmentAnalysisForm from './components/InvestmentAnalysisForm';
+import StockGame from './components/StockGame';
+import Ch1 from './components/Ch1';
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
         <Route path="/financial_instruments_form" element={<FinancialInstrumentsForm />} />
         <Route path="/risk_return_form" element={<RiskReturnForm />} />
         <Route path="/investment_analysis_form" element={<InvestmentAnalysisForm />} />
-        <Route path="/ch1" element={<Ch1 />} />
+        <Route path="/stock_game" element={<StockGame />} />
+        <Route path="/get_ch1" element={<Ch1 />} />
       </Routes>
     </Router>
   );
