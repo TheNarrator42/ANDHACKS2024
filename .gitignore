@@ -1,0 +1,5 @@
+backend/__pycache__/
+backend/api/__pycache__/
+backend/routes/__pycache__/
+backend/tests/
+venv/

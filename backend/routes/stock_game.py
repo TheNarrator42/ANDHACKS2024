@@ -2,6 +2,7 @@ import json
 import os
 import requests
 from flask import Blueprint, jsonify, request
+from routes.black_scholes import black_scholes
 
 stock_game_module = Blueprint('stock_game_module', __name__)
 
@@ -56,3 +57,22 @@ def get_live_stock_data():
         })
     else:
         return jsonify({"error": f"Error fetching stock data: {response.status_code}"}), 500
+    
+@stock_game_module.route('/risk_reward_grid', methods=['GET'])
+def risk_reward_grid():
+    S = 100  # Example stock price
+    r = 0.05  # Risk-free rate
+    sigma = 0.2  # Volatility
+    T_values = [0.1, 0.2, 0.5, 1.0]  # Expiration times in years
+    K_values = [90, 100, 110, 120]  # Strike prices
+
+    grid = []
+    for T in T_values:
+        row = []
+        for K in K_values:
+            call_price = black_scholes(S, K, T, r, sigma, 'call')
+            put_price = black_scholes(S, K, T, r, sigma, 'put')
+            row.append({'strike': K, 'expiration': T, 'call': call_price, 'put': put_price})
+        grid.append(row)
+
+    return jsonify(grid)

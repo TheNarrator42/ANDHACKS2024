@@ -1,4 +1,5 @@
-# Financial Statement Module Test Case
+### Financial Statement Module Test Case
+
 Scenario: Company Y
 Field	Value	Explanation
 Current Assets	150,000	The company's liquid assets, like cash and receivables.
@@ -11,7 +12,8 @@ Total Assets	600,000	The company's total assets (current + long-term).
 Operating Cash Flow	80,000	Cash generated from normal business operations.
 Capital Expenditures (Capex)	20,000	Money spent on maintaining or acquiring assets like equipment.  
 
-# Financial Mathematics Test Case
+### Financial Mathematics Test Case
+
 Example Test Cases:
 
 Future Value:
@@ -68,7 +70,8 @@ Time (t): 10 years (120 months)
 Expected Result:
 Future Value of Annuity (FV) = $69,870.50
 
-# WACC Test Case
+### WACC Test Case
+
 Plugging Values into the WACC Form:
 Debt: 500,000
 Equity: 1,000,000
@@ -77,7 +80,8 @@ Cost of Equity (Re): 8%
 Tax Rate: 30%
 After submitting the form, the app should return a WACC value of 6.26%.
 
-# Financial Instruments Test Cases
+### Financial Instruments Test Cases
+
 Scenario: A company issues a bond with the following characteristics:
 Face Value: $1,000
 Coupon Rate: 5% (annual coupon payment)
@@ -93,7 +97,8 @@ Growth Rate = 4% = 0.04
 Expected Result:
 Stock Price: $41.67
 
-# Risk Return Test
+### Risk Return Test
+
 Test Case for CAPM:
 Inputs:
 Risk-Free Rate: 3%
@@ -101,7 +106,8 @@ Beta: 1.2
 Expected Market Return: 8%
 Required Rate of Return: 9%
 
-# Investment Analysis Test
+### Investment Analysis Test
+
 Test Case for Investment Analysis:
 Inputs:
 Discount Rate: 10%
@@ -113,5 +119,6 @@ Using numerical methods, IRR should be around 17.03%.
 Payback Period:
 It takes 3 years to recover the initial investment.
 
-# TODO
+### TODO
+
 - Table on side for period conversion (financial math FV)
