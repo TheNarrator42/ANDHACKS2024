@@ -17,21 +17,33 @@ def load_access_token():
             return token_data.get('access_token')
     return None
 
+# Simulate mode, set to True during maintenance or testing
+simulate = True
+# Folder of the simulated stock data
+data_directory = "data/"
+
 @stock_game_module.route('/live_stock_data', methods=['GET'])
 def get_live_stock_data():
-    # Simulate mode, set to True during maintenance or testing
-    simulate = request.args.get('simulate', 'false').lower() == 'true'
-    
+    # Return mock (local) data if simulation mode is on
     if simulate:
-        # Return mock data if simulation mode is on
-        mock_data = {
-            "symbol": "AAPL",
-            "price": 150.25,
-            "volume": 54000000,
-            "change": -0.35
-        }
-        return jsonify(mock_data), 200
+        # Get the stock symbol from query parameters
+        symbol = request.args.get('symbol', '').upper() #Normalize tickers to uppercase
+        valid_symbols = ['TSLA', 'PG', 'AMC']
 
+        if symbol in valid_symbols:
+            # File path for the simulated data
+            file_path = os.path.join(data_directory, f"{symbol}.txt")
+            with open(file_path, 'r') as file:
+                prices = [float(price) for price in file.read().strip().split(',')]
+            
+            return jsonify({
+                'symbol': symbol,
+                'data': prices
+            }), 200
+        else:
+            return jsonify({"error": f"No simulated data available for {symbol}"}), 404
+
+    # Fetch real data from (Schwab) API if simulation mode is off
     symbol = request.args.get('symbol')
     access_token = load_access_token()
 

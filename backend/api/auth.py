@@ -3,18 +3,31 @@ import base64
 import requests
 import webbrowser
 import json
-from flask import Blueprint, request, jsonify
+from flask import Flask, Blueprint, request, jsonify, render_template
 from loguru import logger
 
-auth_module = Blueprint('auth_module', __name__)
+auth_module = Blueprint(
+    'auth_module',
+    __name__,
+    template_folder='../../frontend/templates',  # Path to templates directory
+    static_folder='../../frontend/static'       # Path to static directory
+)
 
-# Your client credentials
+# My client credentials
 CLIENT_KEY = '82XokI8wyGruGPl49hOA4l6jh06UcDVu'
 CLIENT_SECRET = '8MXXKDLy1ZpqygMa'
-REDIRECT_URI = 'https://8d80-2600-8805-3a00-9900-dc0-e939-f26d-69d3.ngrok-free.app/callback'
+REDIRECT_URI = 'https://5081-108-28-8-227.ngrok-free.app/callback'
 
 # Token file path
 TOKEN_FILE_PATH = 'access_token.json'
+
+@auth_module.route('/')
+def home():
+    """
+    Default route for the auth_module Blueprint.
+    Serves the landing page for the Schwab API Authentication service.
+    """
+    return render_template('auth.html')
 
 # Helper to construct the initial auth URL
 @auth_module.route('/authorize')
@@ -53,7 +66,7 @@ def retrieve_tokens(headers, payload):
     return token_response.json()
 
 # Callback route
-@auth_module.route('/callback', methods=['POST'])
+@auth_module.route('/callback', methods=['nmPOST'])
 def callback():
     returned_url = request.json.get('returned_url')
     if not returned_url:
@@ -67,3 +80,9 @@ def callback():
         json.dump(token_data, f)
 
     return jsonify(token_data)
+
+# Standalone Flask app entry point for one-time authentication
+if __name__ == '__main__':
+    app = Flask(__name__)
+    app.register_blueprint(auth_module)
+    app.run(debug=True)

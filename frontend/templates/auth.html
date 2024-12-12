@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schwab API Authentication</title>
+    <link rel="stylesheet" href="{{ url_for('auth_module.static', filename='css/auth.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Schwab API Authentication Service</h1>
+    <p>This app is designed to handle the OAuth authentication process for accessing Schwab's API. Use the links below to perform the necessary actions:</p>
+    <ul>
+        <li><a href="/authorize">Start Authorization</a> - Begin the OAuth flow to obtain an access token.</li>
+    </ul>
+    <p>Once you have completed the authentication process, the access token will be saved locally in <code>access_token.json</code>.</p>
+</body>
+</html>

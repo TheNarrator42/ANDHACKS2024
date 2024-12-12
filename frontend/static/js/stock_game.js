@@ -1,19 +1,9 @@
-// ==================== CONSTANTS AND GLOBAL VARIABLES ====================
-const fakeData = [
-    196.13, 194.00, 192.29, 200.42, 200.52, 183.05, 174.35, 175.45, 173.05, 163.16, 
-    172.36, 176.39, 168.76, 181.41, 176.17, 164.02, 169.08, 172.91, 172.55, 170.24,
-    157.64, 148.97, 143.33, 158.96, 188.42, 182.00, 182.10, 182.40, 175.01, 170.00,
-    179.90, 173.55, 175.51, 181.80, 176.40, 178.58, 178.13, 175.35, 176.13, 173.92,
-    188.39, 177.92, 184.68, 184.97, 186.54, 199.55, 218.89, 249.81, 251.00, 263.30,
-    255.97, 252.73, 247.79, 253.60, 216.80, 224.90, 227.90, 214.88, 200.75, 195.70,
-    199.02, 207.39, 211.15, 224.88, 223.82, 218.75, 209.72, 208.63, 210.59, 232.60,
-    220.07, 224.66, 229.30, 230.09, 241.52, 254.08, 260.60, 259.04, 247.55, 246.69
-];
-
+// ==================== GLOBAL VARIABLES ====================
+let stockData = [];
 let currentIndex = 0;
 let netProfit = 0;
 let shares = 0;
-let stockPrice = fakeData[currentIndex];
+let stockPrice = 0;
 let timer;
 
 // ==================== CHART INITIALIZATION ====================
@@ -39,13 +29,46 @@ const stockChart = new Chart(ctx, {
 });
 
 // ==================== FORM HANDLING ====================
-document.getElementById('ticker-form').addEventListener('submit', function(e) {
+document.getElementById('ticker-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     startGame();
 });
 
 // ==================== GAME LOGIC ====================
-function startGame() {
+
+// Fetch data from Flask backend
+async function fetchStockData() {
+    const symbol = document.getElementById('ticker').value.toUpperCase(); // Get user input
+    const stockResult = document.getElementById('stock-result');
+
+    try{
+        //Fetch stock data from the backend
+        const response = await fetch(`/stock_game/live_stock_data?symbol=${symbol}`);
+        const result = await response.json();
+
+        if (response.ok){
+            //Display stock data if available
+            stockResult.innerHTML = `<p>Symbol: ${result.symbol}</p>`;
+            stockData = result.data;
+        }
+        else{
+            //Display error message if stock data if no data is found
+            stockResult.innerHTML = `<p>Error: ${result.error}</p>`;
+        }
+    } catch (error){
+        console.error('Error:', error);
+        stockResult.innerHTML = '<p>Something went wrong fetching stock data.</p>';
+    }
+}
+
+async function startGame() {
+    await fetchStockData(); // Ensure data is loaded before starting
+
+    if (stockData.length === 0) {
+        alert('No stock data available. Please check backend.');
+        return;
+    }
+
     currentIndex = 0;
     netProfit = 0;
     shares = 0;
@@ -54,7 +77,7 @@ function startGame() {
     updateNetProfit();
 
     timer = setInterval(function() {
-        if (currentIndex < fakeData.length) {
+        if (currentIndex < stockData.length) {
             updateStockChart();
         } else {
             clearInterval(timer);
@@ -64,7 +87,7 @@ function startGame() {
 }
 
 function updateStockChart() {
-    stockPrice = fakeData[currentIndex];
+    stockPrice = stockData[currentIndex];
     stockChart.data.labels.push(`Day ${currentIndex + 1}`);
     stockChart.data.datasets[0].data.push(stockPrice);
     stockChart.update();
