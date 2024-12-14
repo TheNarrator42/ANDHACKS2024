@@ -32,3 +32,64 @@ body {
 h1, h3 {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Text shadow for better contrast on dark background */
 }
+
+.risk-reward-table {
+    width: 100%; /* Full width for the table */
+    border-collapse: collapse; /* Remove gaps between borders */
+    margin-top: 20px; /* Add spacing above the table */
+    background-color: #1e1e2f; /* Dark background for the table */
+    color: #f8f9fa; /* Light text for readability */
+    border: 1px solid #2a2a40; /* Subtle border around the table */
+}
+
+.risk-reward-table th, .risk-reward-table td {
+    border: 1px solid #2a2a40; /* Light border for cells */
+    text-align: center; /* Center-align text */
+    padding: 10px; /* Add spacing inside cells */
+    font-size: 14px; /* Adjust font size */
+}
+
+.risk-reward-table th {
+    background-color: #2a2a40; /* Slightly lighter header background */
+    font-weight: bold; /* Bold headers */
+    color: #f1c40f; /* Golden text for headers */
+}
+
+.risk-reward-table tr:nth-child(even) {
+    background-color: #29293d; /* Slightly lighter row background for even rows */
+}
+
+.risk-reward-table tr:nth-child(odd) {
+    background-color: #1e1e2f; /* Default dark background for odd rows */
+}
+
+.risk-reward-table tr:hover {
+    background-color: #3a3a55; /* Highlight row on hover */
+}
+
+#risk-reward-container {
+    max-width: 800px; /* Limit the container's width */
+    margin: 0 auto; /* Center the container */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    padding: 10px; /* Add padding around the container */
+    background-color: #121212; /* Darker background for the container */
+    border-radius: 8px; /* Add rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Subtle shadow for depth */
+}
+
+.risk-reward-table td {
+    font-family: 'Roboto Mono', monospace; /* Monospace font for better readability */
+    font-size: 13px; /* Slightly smaller font for dense data */
+    color: #ffffff; /* White text for better contrast */
+}
+
+.risk-reward-table tr:hover {
+    transition: background-color 0.2s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .risk-reward-table th, .risk-reward-table td {
+        font-size: 12px; /* Reduce font size for small screens */
+        padding: 5px; /* Reduce padding for small screens */
+    }
+}

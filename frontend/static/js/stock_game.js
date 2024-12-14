@@ -1,10 +1,17 @@
 // ==================== GLOBAL VARIABLES ====================
-let stockData = [];
+let stockPrices = [];
 let currentIndex = 0;
 let netProfit = 0;
 let shares = 0;
 let stockPrice = 0;
+let riskFreeRate = 0;
+let volatility = 0;
 let timer;
+
+// ==================== Pre Game Setup ====================
+document.addEventListener('DOMContentLoaded', () => { //render the empty table on page load
+    updateRiskRewardTable(); // Render the empty risk-reward table on page load
+});
 
 // ==================== CHART INITIALIZATION ====================
 const ctx = document.getElementById('stockChart').getContext('2d');
@@ -49,7 +56,9 @@ async function fetchStockData() {
         if (response.ok){
             //Display stock data if available
             stockResult.innerHTML = `<p>Symbol: ${result.symbol}</p>`;
-            stockData = result.data;
+            stockPrices = result.prices;
+            riskFreeRate = result.r;
+            volatility = result.sigma;
         }
         else{
             //Display error message if stock data if no data is found
@@ -62,9 +71,9 @@ async function fetchStockData() {
 }
 
 async function startGame() {
-    await fetchStockData(); // Ensure data is loaded before starting
+    await fetchStockData(); // Fetch stock data from the backend
 
-    if (stockData.length === 0) {
+    if (stockPrices.length === 0) {
         alert('No stock data available. Please check backend.');
         return;
     }
@@ -76,22 +85,26 @@ async function startGame() {
     stockChart.data.datasets[0].data = [];
     updateNetProfit();
 
-    timer = setInterval(function() {
-        if (currentIndex < stockData.length) {
-            updateStockChart();
+    await fetchRiskRewardGrid(stockPrices[currentIndex], riskFreeRate, volatility); // Populate table with real data
+
+    timer = setInterval(function () {
+        if (currentIndex < stockPrices.length) {
+            stockPrice = stockPrices[currentIndex];
+            updateStockChart(stockPrice); // Update stock chart
+            fetchRiskRewardGrid(stockPrice, riskFreeRate, volatility); // Update risk-reward table
+            currentIndex++;
         } else {
             clearInterval(timer);
             alert(`Game over! Your final profit is $${netProfit.toFixed(2)}`);
         }
-    }, 1000); // Update every 1 second
+    }, 1000);
 }
 
-function updateStockChart() {
-    stockPrice = stockData[currentIndex];
+function updateStockChart(stockPrice) {
+
     stockChart.data.labels.push(`Day ${currentIndex + 1}`);
     stockChart.data.datasets[0].data.push(stockPrice);
     stockChart.update();
-    currentIndex++;
 }
 
 function updateNetProfit() {
@@ -114,62 +127,67 @@ document.getElementById('sell-btn').addEventListener('click', function() {
     }
 });
 
-// ==================== API INTERACTIONS ====================
-document.getElementById('stock-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    // Fetch stock data
-    const symbol = document.getElementById('symbol').value;
-    fetch(`/stock_game/live_stock_data?symbol=${symbol}`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                document.getElementById('stock-result').innerHTML = `<p>Error: ${data.error}</p>`;
-            } else {
-                document.getElementById('stock-result').innerHTML = `
-                    <p>Symbol: ${data.symbol}</p>
-                    <p>Price: ${data.price}</p>
-                    <p>Volume: ${data.volume}</p>
-                    <p>Change: ${data.change}%</p>
-                `;
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            document.getElementById('stock-result').innerHTML = '<p>Something went wrong.</p>';
-        });
-});
-
 // ==================== RISK-REWARD TABLE ====================
-function fetchRiskRewardGrid() {
-    fetch('/risk_reward_grid')
-      .then(response => response.json())
-      .then(data => renderRiskRewardTable(data))
-      .catch(error => console.error('Error fetching risk/reward data:', error));
+function fetchRiskRewardGrid(stockPrice, riskFreeRate, volatility) {
+    console.log("Parameters sent:", { stockPrice, riskFreeRate, volatility });
+    fetch(`/stock_game/risk_reward_grid?stockPrice=${stockPrice}&riskFreeRate=${riskFreeRate}&volatility=${volatility}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => updateRiskRewardTable(data)) // Render the updated table
+        .catch(error => console.error('Error fetching risk/reward data:', error));
 }
 
-function renderRiskRewardTable(grid) {
+function updateRiskRewardTable(grid = []) {
     const container = document.getElementById('risk-reward-table');
-    container.innerHTML = ''; // Clear existing content
+    if (!container) return; // Safeguard: Stop if the container is not found
 
+    // Clear existing content
+    container.innerHTML = '';
+
+    // Create table element
     const table = document.createElement('table');
     table.className = 'risk-reward-table';
 
-    // Create header row
+    // Define expiration times (T values) for header row
+    const T_values = ['T=0.1', 'T=0.2', 'T=0.5', 'T=1'];
     const headerRow = document.createElement('tr');
-    headerRow.innerHTML = '<th>Strike</th>' + grid[0].map(cell => `<th>T=${cell.expiration}</th>`).join('');
+    headerRow.innerHTML = '<th>Strike</th>' + 
+        T_values.map(t => `<th>${t}</th>`).join('');
     table.appendChild(headerRow);
 
-    // Create data rows
-    grid.forEach(row => {
-        const dataRow = document.createElement('tr');
-        dataRow.innerHTML = `<td>${row[0].strike}</td>` + 
-                            row.map(cell => `<td>${cell.call.toFixed(2)} / ${cell.put.toFixed(2)}</td>`).join('');
-        table.appendChild(dataRow);
-    });
+    // Render placeholders or data rows based on the input grid
+    if (grid.length === 0) {
+        renderEmptyRows(table, T_values.length, 3); // Render 3 placeholder rows
+    } else {
+        renderDataRows(table, grid);
+    }
 
-    container.appendChild(table);
+    container.appendChild(table); // Append the table to the container
 }
 
-// Fetch the table when the page loads
-document.addEventListener('DOMContentLoaded', fetchRiskRewardGrid);
+// Helper function to render empty rows
+function renderEmptyRows(table, numCols, numRows) {
+    for (let i = 0; i < numRows; i++) {
+        const dataRow = document.createElement('tr');
+        dataRow.innerHTML = `<td>--</td>` + 
+            Array(numCols).fill(`<td>-- / --</td>`).join(''); // Placeholder "-- / --"
+        table.appendChild(dataRow); // Append each row to the table
+    }
+}
+
+
+// Helper function to render rows with actual data
+function renderDataRows(table, grid) {
+    grid.forEach(row => {
+        const dataRow = document.createElement('tr');
+        dataRow.innerHTML = `<td>${row[0].strike}</td>` +
+            row.map(cell => `<td>${cell.call.toFixed(2)} / ${cell.put.toFixed(2)}</td>`).join('');
+        table.appendChild(dataRow);
+    });
+}
+
+

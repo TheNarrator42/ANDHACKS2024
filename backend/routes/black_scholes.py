@@ -11,3 +11,5 @@ def black_scholes(S, K, T, R, sigma, option_type):
         option_price = K * math.exp(-R * T) * norm.cdf(-d2) - S * norm.cdf(-d1)
     else:
         raise ValueError('Option type must be either "call" or "put"')
+    
+    return option_price
